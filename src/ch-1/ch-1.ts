@@ -1,4 +1,5 @@
 import { data } from "./data";
+import { data1 } from "./data-1";
 import assert from "node:assert";
 
 function getSubSet(set: number[], seti: number[]) {
@@ -17,7 +18,7 @@ function getSubSet(set: number[], seti: number[]) {
         return subSet;
     }
 
-    return set;
+    return null;
 }
 
 function sortByAAsc(queries: number[][]) {
@@ -33,19 +34,21 @@ function arrayManipulation(_: number, queries: number[][]) {
 
     sortByAAsc(queries);
 
+    let it = 0;
+
     for (let i = 0; i < querySize; i++) {
         let set = queries[i];
         max = Math.max(max, set[2]);
 
-        if (
-            i + 1 < querySize &&
-            set[0] == queries[i + 1][0] &&
-            set[1] == queries[i + 1][1]
-        ) {
-            continue;
+        if (i < querySize - 1) {
+            const next = getSubSet(set, queries[i + 1]);
+            if (!next) {
+                continue;
+            }
         }
 
-        for (let j = 0; j < querySize; j++) {
+        for (let j = i; j < querySize; j++) {
+            it++;
             const seti = queries[j];
 
             if (i == j) {
@@ -56,15 +59,34 @@ function arrayManipulation(_: number, queries: number[][]) {
                 break;
             }
 
-            set = getSubSet(set, seti);
+            const newSubSet = getSubSet(set, seti);
+
+            if (!newSubSet) {
+                continue;
+            }
+
+            set = newSubSet;
 
             max = Math.max(max, set[2]);
         }
     }
 
+    console.log("iterations", it);
     return max;
 }
 
 console.time("start");
-assert.strictEqual(arrayManipulation(1, data), 2589508786);
+// assert.strictEqual(arrayManipulation(1, data), 2589508786);
+// console.log("second");
+assert.strictEqual(
+    arrayManipulation(1, [
+        [1, 10, 2],
+        [2, 9, 7],
+        [3, 11, 19],
+        [4, 8, 26],
+        [5, 12, 8],
+    ]),
+    2497169732
+);
+assert.strictEqual(arrayManipulation(1, data1), 2497169732);
 console.timeEnd("start");

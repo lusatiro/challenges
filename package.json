@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "go": "ts-node ./src/ch-1/ch-1.ts"
+    "start": "tsc && node ./dist/src/ch-1/ch-1.js",
+    "alt": "tsc && node ./dist/src/ch-1/alt.js"
   },
   "keywords": [],
   "author": "",
