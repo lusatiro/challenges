@@ -13,7 +13,6 @@ The prefix sum array would be:
 
 [0, 10, 10, 10, 10, 0]
 
-
 But the reverse would be:
 
 [0, 10, 0, 0, 0, -10]
