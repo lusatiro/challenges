@@ -2,7 +2,7 @@ import assert from "assert";
 import { data } from "./data";
 
 function arrayManipulation(N: number, queries: number[][]) {
-    const prefixArr = Array(N).fill(0);
+    const prefixArr = Array(N + 1).fill(0);
 
     for (let i = 0; i < queries.length; i++) {
         prefixArr[queries[i][0] - 1] += queries[i][2];
