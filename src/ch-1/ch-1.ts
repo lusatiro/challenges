@@ -1,5 +1,24 @@
 import assert from "assert";
 import { data } from "./data";
+/* 
+Problem: https://www.hackerrank.com/challenges/crush/problem?isFullScreen=false
+
+Problem solved using the technique call prefix sum.
+
+Consider:
+
+[2, 5, 10]
+
+The prefix sum array would be:
+
+[0, 10, 10, 10, 10, 0]
+
+
+But the reverse would be:
+
+[0, 10, 0, 0, 0, -10]
+
+*/
 
 function arrayManipulation(N: number, queries: number[][]) {
     const prefixArr = Array(N + 1).fill(0);
