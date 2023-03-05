@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./dist/src/ch-1/ch-1.js",
-    "alt": "tsc && node ./dist/src/ch-1/alt.js"
+    "start": "ts-node ./src/ch-1/ch-1.ts",
+    "algo": "ts-node ./src/ch-1/algo.ts"
   },
   "keywords": [],
   "author": "",
