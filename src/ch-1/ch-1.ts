@@ -18,6 +18,12 @@ But the reverse would be:
 
 [0, 10, 0, 0, 0, -10]
 
+So instead of change the value of every array in a range
+we should only update two positions for each entry.
+
+After doing all the operations, we only need to revert
+the prefix sum and find the max value.
+
 */
 
 function arrayManipulation(N: number, queries: number[][]) {
